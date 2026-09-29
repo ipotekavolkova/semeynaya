@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Проверьте, подходит ли ваша семья под семейную ипотеку с 1 октября 2026, какая будет ставка и лимит. Людмила Волкова, ипотека и недвижимость.">
+<meta property="og:title" content="Семейная ипотека с 1 октября: проверьте свою семью">
+<meta property="og:description" content="7 вопросов — и вы узнаете ставку, лимит и что важно знать заранее.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Проверка семейной ипотеки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600;700&family=Onest:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one narrow card, question by question, like a consultation at the table; morning-sea palette */
+:root{
+  --bg:#eef4f5; --card:#ffffff; --ink:#12303f; --muted:#56707d; --line:#d6e3e7;
+  --sea:#0e5a73; --sea-soft:#e1eff3; --dawn:#e8a23a; --dawn-soft:#fbf0dc;
+  --ok:#1f7a55; --ok-soft:#e2f3ea; --warn:#9a5b0b; --warn-soft:#fbeed8; --bad:#a3372f; --bad-soft:#f8e3e1;
+  --display:"Montserrat Alternates","Segoe UI",system-ui,sans-serif;
+  --body:"Onest","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1a21; --card:#132730; --ink:#e6f0f3; --muted:#9db3bd; --line:#24414d;
+  --sea:#6cc3dc; --sea-soft:#17323d; --dawn:#f0b659; --dawn-soft:#33291a;
+  --ok:#6fd3a3; --ok-soft:#163328; --warn:#f0bf6e; --warn-soft:#352914; --bad:#f09a90; --bad-soft:#3a1d1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1a21; --card:#132730; --ink:#e6f0f3; --muted:#9db3bd; --line:#24414d;
+  --sea:#6cc3dc; --sea-soft:#17323d; --dawn:#f0b659; --dawn-soft:#33291a;
+  --ok:#6fd3a3; --ok-soft:#163328; --warn:#f0bf6e; --warn-soft:#352914; --bad:#f09a90; --bad-soft:#3a1d1a; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:620px;margin:0 auto;padding-inline:16px;padding-block:24px 40px;display:flex;flex-direction:column;gap:16px}
+.head .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sea);font-weight:600}
+.head h1{font-family:var(--display);font-size:clamp(26px,6vw,34px);line-height:1.15;margin:.35em 0 .3em;text-wrap:balance}
+.head p{margin:0;color:var(--muted)}
+.urgent{background:var(--dawn-soft);color:var(--ink);border-radius:14px;padding:12px 16px;font-size:15px}
+.urgent b{color:var(--warn)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;gap:16px}
+.progress{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{flex:1;height:6px;background:var(--sea-soft);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sea);border-radius:6px;transition:width .3s}
+.q{font-family:var(--display);font-size:22px;line-height:1.25;margin:0;text-wrap:balance}
+.hint{margin:-8px 0 0;color:var(--muted);font-size:14px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{font:inherit;text-align:left;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--sea);background:var(--sea-soft)}
+.opt:focus-visible,.btn:focus-visible,.link:focus-visible{outline:3px solid var(--dawn);outline-offset:2px}
+.opt small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.link{font:inherit;font-size:14px;background:none;border:0;color:var(--sea);cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.result-top{display:flex;flex-wrap:wrap;gap:12px}
+.big{flex:1 1 170px;min-width:0;background:var(--sea-soft);border-radius:16px;padding:16px}
+.big span{display:block;font-size:13px;color:var(--muted)}
+.big b{display:block;font-family:var(--display);font-size:34px;line-height:1.1;color:var(--sea);font-variant-numeric:tabular-nums}
+.big em{font-style:normal;font-size:13px;color:var(--muted)}
+.verdict{border-radius:14px;padding:14px 16px;font-weight:600}
+.verdict.ok{background:var(--ok-soft);color:var(--ok)}
+.verdict.bad{background:var(--bad-soft);color:var(--bad)}
+.notes{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.notes li{border-left:4px solid var(--line);padding:2px 0 2px 12px;font-size:15px}
+.notes li.warn{border-color:var(--dawn)}
+.notes li.tip{border-color:var(--ok)}
+h2{font-family:var(--display);font-size:18px;margin:4px 0 0}
+.contact{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.contact .who{display:flex;flex-direction:column}
+.contact .who b{font-size:17px}
+.contact .who span{color:var(--muted);font-size:14px}
+.msg{width:100%;min-height:120px;font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;resize:vertical}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font:inherit;font-weight:600;border-radius:12px;padding:12px 16px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.main{background:var(--sea);color:var(--card)}
+.btn.alt{background:var(--sea-soft);color:var(--sea)}
+.phone{font-family:var(--display);font-size:22px;font-variant-numeric:tabular-nums;user-select:all}
+.status{font-size:13px;color:var(--ok);min-height:1em}
+.fine{font-size:12.5px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">Семейная ипотека · правила с 1 октября 2026</div>
+    <h1>Подходит ли ваша семья и какой будет ставка</h1>
+    <p>7 коротких вопросов. В конце — предварительная ставка, лимит кредита и то, о чём важно знать заранее.</p>
+  </header>
+
+  <div class="urgent" id="urgent" hidden></div>
+
+  <section class="card" id="quiz" aria-live="polite">
+    <div class="progress"><span id="stepLabel">Вопрос 1 из 7</span><div class="bar"><i id="barFill" style="width:14%"></i></div></div>
+    <h2 class="q" id="qText">Есть ли в семье ребёнок младше 7 лет?</h2>
+    <p class="hint" id="qHint">Возраст считается на дату подписания кредитного договора.</p>
+    <div class="opts" id="opts"></div>
+    <div class="nav"><button class="link" id="back" type="button" hidden>← Назад</button><span></span></div>
+  </section>
+
+  <section class="card" id="result" hidden></section>
+
+  <section class="contact" id="contact" hidden>
+    <div class="who"><b>Людмила Волкова</b><span>Ипотека и недвижимость · 15 лет в банке · Новороссийск и вся Россия</span></div>
+    <p style="margin:0">Хотите точный расчёт под ваш объект и банк? Отправьте мне это сообщение — ваши ответы уже в нём.</p>
+    <textarea class="msg" id="msg" aria-label="Сообщение для консультации"></textarea>
+    <div class="btns">
+      <button class="btn alt" id="copyMsg" type="button">Скопировать сообщение</button>
+      <a class="btn main" id="wa" href="https://wa.me/79184138588" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn main" href="https://t.me/ipoteka_volkova" target="_blank" rel="noopener">Telegram</a>
+    </div>
+    <div class="status" id="copyStatus" role="status"></div>
+    <div>Или позвоните: <span class="phone">+7 918 413-85-88</span></div>
+    <div class="fine">Канал с разборами: <a href="https://t.me/ipotekavolkova" target="_blank" rel="noopener">t.me/ipotekavolkova</a></div>
+  </section>
+
+  <p class="fine">Предварительная оценка по Правилам программы «Семейная ипотека» (Решение № 25-67381-01850-Р) для кредитных договоров с 1 октября 2026 года. Ставки — максимальные по программе, банк может дать ниже. Окончательное решение принимает банк. Ваши ответы никуда не отправляются: сообщение уходит, только если вы сами его отправите.</p>
+</div>
+
+<script>
+(function(){
+  var RATE={reg:{1:10,2:8,3:6,4:4,5:2},cap:{1:12,2:10,3:8,4:6,5:4}};
+  var LIMIT={reg:{1:6,2:8,3:10,4:10,5:10},cap:{1:12,2:15,3:18,4:18,5:18}};
+  var COMBO={reg:15,cap:30};
+
+  var Q=[
+    {id:'young',q:'Есть ли в семье ребёнок младше 7 лет?',h:'Возраст считается на дату подписания кредитного договора.',o:[['yes','Да'],['no','Нет']]},
+    {id:'dis',q:'Есть ли в семье ребёнок с инвалидностью?',h:'Имеется в виду установленная категория «ребёнок-инвалид». Возраст ребёнка не важен.',o:[['yes','Да'],['no','Нет']]},
+    {id:'kids',q:'Сколько всего детей в семье?',h:'Считаются все дети — граждане РФ, включая старших и совершеннолетних.',o:[['1','Один'],['2','Двое'],['3','Трое'],['4','Четверо'],['5','Пятеро и больше']]},
+    {id:'obj',q:'Что планируете купить?',h:'',o:[['flat','Квартиру в новостройке','Строящийся дом или готовый — у застройщика'],['house','Дом','Строительство по договору подряда, земля со стройкой или готовый дом от застройщика'],['resale','Квартиру на вторичном рынке','У частного продавца']]},
+    {id:'reg',q:'Где находится жильё?',h:'Ставка и лимит считаются по региону, где жильё, а не по месту жительства семьи.',o:[['cap','Москва, Санкт-Петербург и их области'],['reg','Другие регионы России']]},
+    {id:'down',q:'Сколько планируете внести сами?',h:'Своими деньгами, материнским капиталом или субсидией — от стоимости жилья.',o:[['lt20','Меньше 20%'],['mid','От 20% до 49%'],['half','50% и больше']]},
+    {id:'prev',q:'Брали ли вы или супруг льготную ипотеку после 23 декабря 2023 года?',h:'Любую: семейную, IT, дальневосточную и другие. Здесь же — если второй родитель уже брал семейную ипотеку на этих детей.',o:[['no','Нет'],['yes','Да'],['unk','Не знаю']]}
+  ];
+  var A={}, i=0;
+  var $=function(id){return document.getElementById(id)};
+
+  function showUrgent(){
+    var now=new Date(), end=new Date(2026,8,30,23,59,59);
+    if(now<=end){
+      var d=Math.ceil((end-now)/864e5);
+      $('urgent').innerHTML='<b>До 30 сентября включительно</b> ещё действуют прежние условия — если кредитный договор подписан в этот срок. '+(d<=1?'Остался последний день.':'Осталось дней: '+d+'.');
+      $('urgent').hidden=false;
+    }
+  }
+
+  function render(){
+    var s=Q[i];
+    $('stepLabel').textContent='Вопрос '+(i+1)+' из '+Q.length;
+    $('barFill').style.width=Math.round((i+1)/Q.length*100)+'%';
+    $('qText').textContent=s.q;
+    $('qHint').textContent=s.h; $('qHint').hidden=!s.h;
+    var box=$('opts'); box.innerHTML='';
+    s.o.forEach(function(o){
+      var b=document.createElement('button'); b.type='button'; b.className='opt'; b.id='opt-'+s.id+'-'+o[0];
+      b.innerHTML=o[1]+(o[2]?'<small>'+o[2]+'</small>':'');
+      b.addEventListener('click',function(){A[s.id]=o[0]; next();});
+      box.appendChild(b);
+    });
+    $('back').hidden=i===0;
+  }
+  function next(){
+    if(i===1 && A.young==='no' && A.dis==='no'){ return finish(); }
+    if(i<Q.length-1){i++; render();} else finish();
+  }
+  $('back').addEventListener('click',function(){ if(i>0){i--; render();} });
+
+  function label(id,val){var q=Q.filter(function(x){return x.id===id})[0]; if(!q) return ''; var o=q.o.filter(function(x){return x[0]===val})[0]; return o?o[1]:'';}
+
+  function finish(){
+    $('quiz').hidden=true;
+    var r=$('result'), html='', notes=[], summary=[];
+    var eligible=(A.young==='yes'||A.dis==='yes');
+    summary.push('ребёнок младше 7 лет — '+(A.young==='yes'?'да':'нет'));
+    summary.push('ребёнок с инвалидностью — '+(A.dis==='yes'?'да':'нет'));
+    if(!eligible){
+      html+='<div class="verdict bad">По правилам с 1 октября семейная ипотека вашей семье недоступна</div>';
+      html+='<p style="margin:0">Теперь программа только для семей, где есть ребёнок младше 7 лет или ребёнок с инвалидностью. Количество детей значения не имеет.</p>';
+      html+='<ul class="notes"><li class="tip">Если кредитный договор подписан до 30 сентября включительно — действуют прежние условия.</li><li class="tip">Есть и другие варианты: рыночная ипотека, субсидированная ставка от застройщика, региональные программы. Посчитаю, что выгоднее именно вам.</li></ul>';
+      r.innerHTML=html; r.hidden=false; buildMsg(summary,'Семейная ипотека по новым правилам недоступна — хочу разобрать другие варианты.'); return;
+    }
+    var k=Math.min(+A.kids||1,5), reg=A.reg||'reg';
+    summary.push('детей — '+label('kids',A.kids).toLowerCase());
+    summary.push('объект — '+label('obj',A.obj).toLowerCase());
+    summary.push('регион — '+(reg==='cap'?'Москва/СПб/области':'регион (не столичный)'));
+    summary.push('взнос — '+label('down',A.down).toLowerCase());
+    var base=RATE[reg][k], rate=base, why='по количеству детей и региону';
+    if(A.dis==='yes'){rate=Math.min(rate,6); why='семья с ребёнком с инвалидностью';}
+    else if(A.obj==='house'){rate=Math.min(rate,6); why='строительство или покупка дома';}
+    else if(A.down==='half'){rate=Math.min(rate,6); why='взнос 50% и больше';}
+    var lim=LIMIT[reg][k];
+    html+='<div class="verdict ok">Семья подходит под программу</div>';
+    html+='<div class="result-top"><div class="big"><span>Ставка</span><b>до '+rate+'%</b><em>'+why+'</em></div><div class="big"><span>Льготный лимит кредита</span><b>до '+lim+' млн ₽</b><em>вся сумма кредита — до '+COMBO[reg]+' млн ₽, часть сверх лимита по условиям банка</em></div></div>';
+    if(rate>6){notes.push(['tip','<b>Как снизить ставку до 6%:</b> внести сразу не меньше половины стоимости (можно материнским капиталом) или в течение первого года погасить кредит так, чтобы долг был не больше половины цены жилья. Тогда ставка станет 6% со следующего платежа.']);}
+    if(A.down==='lt20'){notes.push(['warn','<b>Минимальный взнос — 20%</b> стоимости жилья (своими, маткапиталом или субсидией). Подскажу, как собрать недостающее.']);}
+    if(A.obj==='resale'){notes.push(['warn','<b>Вторичное жильё по семейной ипотеке</b> можно купить только в городах из специального списка — в основном там, где почти не строят новостройки. Например, Новороссийск в этот список не входит. Проверю ваш город и объект до того, как вы внесёте задаток.']);}
+    if(reg==='reg' && A.obj==='flat'){notes.push(['tip','Покупаете у моря, а живёте в Москве или Петербурге? Ставка считается по региону жилья — вам достаются региональные условия.']);}
+    if(A.prev==='yes'){notes.push(['warn','<b>Льготная ипотека после 23.12.2023 уже была</b> — по правилам банк вправе повысить ставку по новому кредиту. Исключение — если после того договора родился ребёнок, а кредит полностью погашен. Нужно разобрать вашу ситуацию.']);}
+    if(A.prev==='unk'){notes.push(['warn','Проверим кредитную историю: если льготная ипотека после 23.12.2023 уже была — у вас или у второго родителя на этих же детей, — ставку могут повысить.']);}
+    notes.push(['','<b>Прописка:</b> с 271-го дня после регистрации права собственности и до 5 лет с выдачи кредита нужно быть зарегистрированным в купленном жилье. Банк проверяет это каждый год.']);
+    notes.push(['','<b>Супруг</b> обязательно становится созаёмщиком, даже при брачном договоре.']);
+    notes.push(['','<b>Страхование жизни и жилья:</b> без него ставку могут поднять — не больше чем на 1 пункт.']);
+    notes.push(['','<b>15 лет субсидирования.</b> Потом ставка может вырасти, но не больше чем на 4 пункта к вашей, а при низкой ключевой ставке — меньше.']);
+    notes.push(['tip','<b>Родится ещё ребёнок</b> — принесите в банк свидетельство о рождении, и ставку пересчитают со следующего платежа.']);
+    html+='<h2>Что важно знать заранее</h2><ul class="notes">'+notes.map(function(n){return '<li class="'+n[0]+'">'+n[1]+'</li>'}).join('')+'</ul>';
+    html+='<button class="link" id="again" type="button">Пройти заново</button>';
+    r.innerHTML=html; r.hidden=false;
+    $('again').addEventListener('click',restart);
+    buildMsg(summary,'Предварительно: ставка до '+rate+'%, лимит до '+lim+' млн ₽. Хочу точный расчёт.');
+  }
+  function buildMsg(summary,tail){
+    var t='Здравствуйте, Людмила! Прошла проверку по семейной ипотеке: '+summary.join('; ')+'. '+tail;
+    $('msg').value=t;
+    $('wa').href='https://wa.me/79184138588?text='+encodeURIComponent(t);
+    $('contact').hidden=false;
+    if(!$('again')){var a=document.createElement('button');a.className='link';a.id='again';a.type='button';a.textContent='Пройти заново';a.addEventListener('click',restart);$('result').appendChild(a);}
+    $('result').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function restart(){A={};i=0;$('result').hidden=true;$('contact').hidden=true;$('quiz').hidden=false;render();window.scrollTo({top:0});}
+  $('copyMsg').addEventListener('click',function(){
+    var t=$('msg').value, st=$('copyStatus');
+    try{navigator.clipboard.writeText(t).then(function(){st.textContent='Сообщение скопировано — вставьте его в Telegram.';},function(){$('msg').select();st.textContent='Выделила текст — скопируйте его вручную.';});}
+    catch(e){$('msg').select();st.textContent='Выделила текст — скопируйте его вручную.';}
+  });
+  showUrgent(); render();
+})();
+</script>
+
+</body>
+</html>
