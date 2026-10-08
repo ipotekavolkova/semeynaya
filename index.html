@@ -103,6 +103,7 @@ h2{font-family:var(--display);font-size:18px;margin:4px 0 0}
     <textarea class="msg" id="msg" aria-label="Сообщение для консультации"></textarea>
     <div class="btns">
       <button class="btn alt" id="copyMsg" type="button">Скопировать сообщение</button>
+      <a class="btn main" href="https://max.ru/u/f9LHodD0cOJxsivH6HofZUXQ77yMseYbx5fWtdudRWnNmO8VmJsDA7JVhao" target="_blank" rel="noopener">MAX</a>
       <a class="btn main" id="wa" href="https://wa.me/79184138588" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn main" href="https://t.me/ipoteka_volkova" target="_blank" rel="noopener">Telegram</a>
     </div>
@@ -181,6 +182,15 @@ h2{font-family:var(--display);font-size:18px;margin:4px 0 0}
     summary.push('объект — '+label('obj',A.obj).toLowerCase());
     summary.push('регион — '+(reg==='cap'?'Москва/СПб/области':'регион (не столичный)'));
     summary.push('взнос — '+label('down',A.down).toLowerCase());
+    summary.push('льготная ипотека после 23.12.2023 — '+(A.prev==='yes'?'была':A.prev==='unk'?'не знаю':'не было'));
+    if(A.prev==='yes'||A.down==='lt20'){
+      html+='<div class="verdict bad">По этим ответам семья сейчас не проходит по семейной ипотеке</div><ul class="notes">';
+      if(A.prev==='yes'){html+='<li class="warn"><b>Льготная ипотека после 23 декабря 2023 года уже была</b> — у вас, у супруга или у второго родителя на этих же детей. Повторно получить семейную ипотеку на льготных условиях нельзя. Исключение — если после того договора родился ребёнок, а прежний кредит полностью погашен.</li>';}
+      if(A.down==='lt20'){html+='<li class="warn"><b>Первоначальный взнос меньше 20%</b> — с таким взносом семейную ипотеку не одобрят. Взнос можно собрать из своих денег, материнского капитала или региональных субсидий.</li>';}
+      html+='<li class="tip">Это не тупик. Подскажу, какие варианты есть именно у вас: рыночная ипотека, субсидированная ставка от застройщика, другие программы.</li></ul>';
+      r.innerHTML=html; r.hidden=false;
+      buildMsg(summary,'По проверке есть препятствие для семейной ипотеки — хочу разобрать, какие варианты у меня есть.'); return;
+    }
     var base=RATE[reg][k], rate=base, why='по количеству детей и региону';
     if(A.dis==='yes'){rate=Math.min(rate,6); why='семья с ребёнком с инвалидностью';}
     else if(A.obj==='house'){rate=Math.min(rate,6); why='строительство или покупка дома';}
@@ -189,11 +199,9 @@ h2{font-family:var(--display);font-size:18px;margin:4px 0 0}
     html+='<div class="verdict ok">Семья подходит под программу</div>';
     html+='<div class="result-top"><div class="big"><span>Ставка</span><b>до '+rate+'%</b><em>'+why+'</em></div><div class="big"><span>Льготный лимит кредита</span><b>до '+lim+' млн ₽</b><em>вся сумма кредита — до '+COMBO[reg]+' млн ₽, часть сверх лимита по условиям банка</em></div></div>';
     if(rate>6){notes.push(['tip','<b>Как снизить ставку до 6%:</b> внести сразу не меньше половины стоимости (можно материнским капиталом) или в течение первого года погасить кредит так, чтобы долг был не больше половины цены жилья. Тогда ставка станет 6% со следующего платежа.']);}
-    if(A.down==='lt20'){notes.push(['warn','<b>Минимальный взнос — 20%</b> стоимости жилья (своими, маткапиталом или субсидией). Подскажу, как собрать недостающее.']);}
     if(A.obj==='resale'){notes.push(['warn','<b>Вторичное жильё по семейной ипотеке</b> можно купить только в городах из специального списка — в основном там, где почти не строят новостройки. Например, Новороссийск в этот список не входит. Проверю ваш город и объект до того, как вы внесёте задаток.']);}
     if(reg==='reg' && A.obj==='flat'){notes.push(['tip','Покупаете у моря, а живёте в Москве или Петербурге? Ставка считается по региону жилья — вам достаются региональные условия.']);}
-    if(A.prev==='yes'){notes.push(['warn','<b>Льготная ипотека после 23.12.2023 уже была</b> — по правилам банк вправе повысить ставку по новому кредиту. Исключение — если после того договора родился ребёнок, а кредит полностью погашен. Нужно разобрать вашу ситуацию.']);}
-    if(A.prev==='unk'){notes.push(['warn','Проверим кредитную историю: если льготная ипотека после 23.12.2023 уже была — у вас или у второго родителя на этих же детей, — ставку могут повысить.']);}
+    if(A.prev==='unk'){notes.push(['warn','<b>Важно проверить:</b> если после 23.12.2023 у вас, супруга или второго родителя на этих же детей уже была льготная ипотека — семейную на льготных условиях не дадут. Проверю по кредитной истории до подачи заявки.']);}
     notes.push(['','<b>Прописка:</b> с 271-го дня после регистрации права собственности и до 5 лет с выдачи кредита нужно быть зарегистрированным в купленном жилье. Банк проверяет это каждый год.']);
     notes.push(['','<b>Супруг</b> обязательно становится созаёмщиком, даже при брачном договоре.']);
     notes.push(['','<b>Страхование жизни и жилья:</b> без него ставку могут поднять — не больше чем на 1 пункт.']);
@@ -216,7 +224,7 @@ h2{font-family:var(--display);font-size:18px;margin:4px 0 0}
   function restart(){A={};i=0;$('result').hidden=true;$('contact').hidden=true;$('quiz').hidden=false;render();window.scrollTo({top:0});}
   $('copyMsg').addEventListener('click',function(){
     var t=$('msg').value, st=$('copyStatus');
-    try{navigator.clipboard.writeText(t).then(function(){st.textContent='Сообщение скопировано — вставьте его в Telegram.';},function(){$('msg').select();st.textContent='Выделила текст — скопируйте его вручную.';});}
+    try{navigator.clipboard.writeText(t).then(function(){st.textContent='Сообщение скопировано — вставьте его в MAX или Telegram.';},function(){$('msg').select();st.textContent='Выделила текст — скопируйте его вручную.';});}
     catch(e){$('msg').select();st.textContent='Выделила текст — скопируйте его вручную.';}
   });
   showUrgent(); render();
